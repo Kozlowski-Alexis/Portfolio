@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/homepage.css') }}">
+{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Alexis KOZLOWSKI</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <main role="main" class="container-fluid main">
+        <h1>Kozlowski Alexis</h1>
+        <h2>Developpeur Web de gestion !</h2>
+    </main>
+
+    <div class="container-fluid">
+        <div class="container post">
+            {% for post in posts %}
+                <h1>{{ post.title }}</h1>
+                <span>{{ post.content }}</span>
+                <span>{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</span>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+        </div>
+
+        <div class="container">
+            {% for skill in skills %}
+                <h1>{{ skill.name }}</h1>
+                <span>{{ skill.value }}</span>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
