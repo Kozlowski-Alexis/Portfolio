@@ -2,13 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\SkillRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ProjectRepository")
  */
-class Post
+class Project
 {
     /**
      * @ORM\Id()
@@ -31,11 +30,6 @@ class Post
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
-
-    public function __construct()
-    {
-        $this->createdAt = new \DateTime('now');
-    }
 
     public function getId(): ?int
     {
@@ -77,9 +71,4 @@ class Post
 
         return $this;
     }
-
-    public function getSkill(SkillRepository $skillRepository){
-        return $skillRepository->findAll();
-    }
-
 }

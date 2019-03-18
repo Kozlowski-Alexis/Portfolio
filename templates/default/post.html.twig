@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/homepage.css') }}">
+{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top nav shadow-sm">
+        <a class="navbar-brand" href="#">Alexis Kozlowski</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('default') }}">ACCUEIL</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('about_me') }}">A PROPOS DE MOI</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-primary navItem" href="{{ path('contact') }}">CONTACT</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid align-content-center main ">
+        <h1 class="text-center">{{ post.title }}</h1>
+    </div>
+    <div class="container-fluid listPost">
+        <img class="card-img-top img-responsive shadow" style="height: 50vh"
+             src="{{ asset('asset/img/focus-sur-le-metier-de-developpeur-web-istock-494345930_585ce4bd91848.jpg') }}"/>
+        <div class="col-sm card post shadow">
+            <div class="card-body">
+                <h4 class="card-title postTitle">{{ post.createdAt ? post.createdAt|date('d / m / Y') : '' }}</h4>
+                <p class="card-text">
+                    {{ post.content }}
+                </p>
+            </div>
+        </div>
+        <div style="background-color: #f9faff;" id="disqus_thread"></div>
+    </div>
+
+    <div class="container-fluid footer">
+        <ul class="list-group list-group-horizontal">
+            <li><a class="list-icon" href="https://github.com/Kozlowski-Alexis"><i class="fa fa-github"></i></a></li>
+            <li><a class="list-icon" href="{{ path('contact') }}"><i class="fa fa-envelope"></i></a></li>
+            <li><a class="list-icon" href="https://www.linkedin.com/in/alexis-kozlowski-6b7548174/"><i class="fa fa-linkedin"></i></a></li>
+        </ul>
+        <p class="text-center text-footer">© 2018 Copyright - Alexis Kozlowski</p>
+    </div>
+
+    {% block javascripts %}
+        <script>
+
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+            /*
+            var disqus_config = function () {
+            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            */
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://portfolio-alexis.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+    {% endblock %}
+{% endblock %}

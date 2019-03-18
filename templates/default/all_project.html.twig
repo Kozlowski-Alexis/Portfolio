@@ -28,39 +28,9 @@
     </nav>
 
     <div class="container-fluid align-content-center main ">
-        <h1 class="text-center">Kozlowski Alexis</h1>
-        <h2 class="text-center">Developpeur Web de gestion !</h2>
+        <h1 class="text-center">Tous les projets</h1>
     </div>
 
-    <div class="container-fluid listPost">
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 offset-lg-4 offset-xl-4 text-center pb-5">
-                <h1 class="listTitlePost rounded">Articles</h1>
-            </div>
-        </div>
-        <div class="row">
-            {% for post in posts %}
-                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                    <img class="card-img-top img-responsive shadow"
-                         src="{{ asset('asset/img/focus-sur-le-metier-de-developpeur-web-istock-494345930_585ce4bd91848.jpg') }}"/>
-                    <div class="col-sm card post shadow">
-                        <div class="card-body">
-                            <h4 class="card-title postTitle">{{ post.createdAt ? post.createdAt|date('d / m / Y') : '' }}</h4>
-                            <h3>{{ post.title }}</h3>
-                            <p class="card-text">
-                                {{ post.content }}
-                            </p>
-                            <a href="{{ path('default_post_show', {'id': post.id}) }}"
-                               class="btn btn-outline-primary btn-card">En savoir
-                                plus</a>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-
-    <div class="container-fluid blur"></div>
 
     <div class="container-fluid listProject">
         <div class="row">
@@ -88,11 +58,6 @@
                     </div>
                 </div>
             {% endfor %}
-        </div>
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 offset-lg-4 offset-xl-4 text-center pb-5">
-                <a href="{{ path('projets') }}" class="btn btn-outline-primary all-project-btn">Tous les projets</a>
-            </div>
         </div>
     </div>
 

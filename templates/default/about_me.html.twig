@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/homepage.css') }}">
+{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top nav shadow-sm">
+        <a class="navbar-brand" href="#">Alexis Kozlowski</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('default') }}">ACCUEIL</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('about_me') }}">A PROPOS DE MOI</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-primary navItem" href="{{ path('contact') }}">CONTACT</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid align-content-center main ">
+        <h1 class="text-center">A propos de moi</h1>
+    </div>
+
+    <div class="container-fluid" style="background-color: #f9faff">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+                    <img class="img-fluid" src="asset/img/about_me.jpg"
+                         style="border-radius: 10px; margin-top: 4em; width: 90vh; margin-left: 20em">
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 shadow-lg"
+                     style="background-color: white; height: 35vh; width: 10vh; margin-left: -20em; margin-top: 7em; border-radius: 10px">
+                    <h1 class="mt-4">Alexis</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi autem commodi consequatur
+                        cumque delectus, dolore ducimus eum hic, non numquam officiis possimus quo saepe soluta, sunt
+                        voluptate voluptatem voluptatum!</p>
+                    <a href="asset/file/CV-Alexis-Kozlowski.pdf" class="btn btn-outline-primary" style="margin-top: 12vh; margin-left: 23vh">
+                        <span class="fa fa-download mr-2"></span>
+                        Mon CV</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid" style="margin-top: 9em">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 shadow-lg"
+                     style="background-color: white; height: 35vh; width: 10vh; margin-top: 7em; border-radius: 10px; margin-right: -20em; margin-left: 20em; z-index: 1">
+                    <h1 class="mt-5">Mes Competences</h1>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 skillList mb-5">
+                    {#<img class="img-fluid" src="asset/img/gradient.png"#}
+                    {#style="border-radius: 10px; margin-top: 4em; width: 90vh; z-index: 0; position: relative">#}
+                    <ul class="list-group">
+                        {% for skill in skills %}
+                            <li>
+                                <h4>{{ skill.name }}</h4>
+                                <div class="progress-bar bg-secondary mb-5 rounded" role="progressbar"
+                                     aria-valuenow="{{ skill.value }}" aria-valuemin="0" aria-valuemax="100"
+                                     style="width: {{ skill.value }}%">{{ skill.value }} %
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid footer">
+        <ul class="list-group list-group-horizontal">
+            <li><a class="list-icon" href="https://github.com/Kozlowski-Alexis"><i class="fa fa-github"></i></a></li>
+            <li><a class="list-icon" href="{{ path('contact') }}"><i class="fa fa-envelope"></i></a></li>
+            <li><a class="list-icon" href="https://www.linkedin.com/in/alexis-kozlowski-6b7548174/"><i class="fa fa-linkedin"></i></a></li>
+        </ul>
+        <p class="text-center text-footer">© 2018 Copyright - Alexis Kozlowski</p>
+    </div>
+{% endblock %}

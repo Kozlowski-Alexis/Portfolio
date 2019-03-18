@@ -1,0 +1,234 @@
+body{
+    background-image: url("../img/background.jpeg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.main{
+    background-image: linear-gradient( 135deg, #43CBFF 10%, #9708CC 100%);
+    opacity: 0.90;
+    padding-bottom: 5em;
+    height: 40vh;
+    padding-top: 15vh;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 36px;
+}
+
+.nav{
+    background-color: white;
+}
+.nav-link{
+    margin-left: 2em;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    color: #3b566e;
+}
+
+.navItem{
+    margin-right: 18em;
+    margin-left: 2em;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+}
+
+.listTitlePost{
+    background: linear-gradient( 135deg, #43CBFF 10%, #9708CC 100%);
+    color: white;
+    width: 50%;
+    text-align: center;
+    margin-left: 25%;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.listTitleProject{
+    background-image: linear-gradient( 135deg, #52E5E7 10%, #130CB7 100%);
+    color: white;
+    width: 50%;
+    text-align: center;
+    margin-left: 25%;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card{
+    font-family: 'Nunito', sans-serif;
+}
+
+.listPost{
+    padding-top: 6em;
+    padding-bottom: 3em;
+    background-color: #f9faff;
+    padding-left: 10em;
+    padding-right: 10em;
+}
+
+.postTitle{
+    background-image: linear-gradient( 135deg, #43CBFF 10%, #9708CC 100%);
+    color: white;
+    width: 40%;
+    height: 20%;
+    line-height: 2em;
+    text-align: center;
+    margin-left: 30%;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: -1.5em;
+    border-radius: 30px;
+}
+
+@media screen and (max-width: 640px) {
+    .postTitle{
+        width: 100%;
+        margin-left: 0%;
+        float: right;
+    }
+}
+
+.projectTitle{
+    background-image: linear-gradient( 135deg, #52E5E7 10%, #130CB7 100%);
+    color: white;
+    height: 20%;
+    width: 35%;
+    line-height: 2em;
+    text-align: center;
+    margin-left: 35%;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: -1.5em;
+    border-radius: 30px;
+}
+
+.listProject{
+    padding-top: 6em;
+    padding-bottom: 5em;
+    background-color: #f9faff;
+    padding-left: 10em;
+    padding-right: 10em;
+}
+
+.blur{
+    height: 20vh;
+    opacity: 0.60;
+    background-color: #7b9cff;
+}
+
+.post{
+    height: 20em;
+    margin-bottom: 4em;
+    padding-bottom: 2em;
+}
+
+.skill{
+    margin-top: 3em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.card-img-top{
+    -webkit-border-top-left-radius: 15px;
+    -webkit-border-top-right-radius: 15px;
+    -moz-border-radius-topleft: 15px;
+    -moz-border-radius-topright: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.card{
+    -webkit-border-bottom-right-radius: 15px;
+    -webkit-border-bottom-left-radius: 15px;
+    -moz-border-radius-bottomright: 15px;
+    -moz-border-radius-bottomleft: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius:  15px;
+}
+
+.btn-card{
+    margin-top: 7em;
+}
+
+.footer{
+    height: 40vh;
+    background-image: linear-gradient( 135deg, #52E5E7 10%, #130CB7 100%);
+    opacity: 0.80;
+    padding-top: 6em;
+}
+
+.text-footer{
+    padding-top: 15vh;
+    color: white;
+}
+
+.contact-icon{
+    background: linear-gradient( 135deg, #43CBFF 10%, #9708CC 100%);
+    color: white;
+    width: 100%;
+    text-align: center;
+    height: 15vh;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: -4em;
+    border-radius: 10px;
+    padding-top: 3em;
+}
+
+.contact-form{
+    margin-top: 8em;
+}
+
+ul{
+    list-style: none;
+    justify-content: center;
+}
+
+.list-icon{
+    margin-right: 5vh;
+    font-size: 7vh;
+    color: white;
+    opacity: 1;
+    padding-left: 1vh;
+}
+
+.list-icon:hover{
+    background-image: linear-gradient( 135deg, #F6D242 10%, #FF52E5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@media screen and (max-width: 640px) {
+    .projectTitle{
+        width: 100%;
+        margin-left: 0%;
+        float: right;
+    }
+    .contact-icon{
+        padding-top: 0em;
+    }
+    .listPost{
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+    .listProject{
+        padding-right: 1em;
+        padding-left: 1em;
+    }
+}
+
+input[type=email]{
+    border-radius: 20px;
+}
+
+.all-project-btn{
+    border-radius: 20px;
+    width: 25vh;
+    height: 5vh;
+}
+
+.skillList{
+    padding-bottom: 3em;
+    color: white;
+    padding-left: 40vh;
+    padding-top: 40vh;
+    background: linear-gradient( 135deg, #43CBFF 10%, #9708CC 100%);
+    border-radius: 10px;
+    margin-top: 4em;
+    z-index: 0;
+    position: relative;
+}
