@@ -14,7 +14,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="{{ path('post_index') }}">Gestion articles<span class="sr-only"></span></a>
                 </li>
                 <li class="nav-item">
@@ -23,7 +23,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('skill_index') }}">Gestion competences</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="{{ path('contact_index') }}">Messages</a>
                 </li>
                 <li class="nav-item">
@@ -38,34 +38,34 @@
         <table>
             <thead>
             <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Content</th>
-                <th>CreatedAt</th>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Date</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            {% for post in posts %}
+            {% for contact in contacts %}
                 <tr>
-                    <td>{{ post.id }}</td>
-                    <td>{{ post.title }}</td>
-                    <td>{{ post.content | slice(0, 30) }}</td>
-                    <td>{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ contact.name }}</td>
+                    <td>{{ contact.fullname }}</td>
+                    <td>{{ contact.email }}</td>
+                    <td>{{ contact.message | slice(0, 30)}}</td>
+                    <td>{{ contact.createdAt ? contact.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                     <td>
-                        <a style="color: white" href="{{ path('post_show', {'id': post.id}) }}">show</a>
-                        <a style="color: white" href="{{ path('post_edit', {'id': post.id}) }}">edit</a>
+                        <a style="color: white" href="{{ path('contact_show', {'id': contact.id}) }}">show</a>
                     </td>
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="5">no records found</td>
+                    <td colspan="7">no records found</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
     </div>
 
-    <a class="btn btn-info ml-2 mt-2" href="{{ path('post_new') }}">Ajouter un article</a>
-
 {% endblock %}
+

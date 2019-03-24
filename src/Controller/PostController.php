@@ -10,9 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/admin/post")
- */
+
 class PostController extends AbstractController
 {
     /**
@@ -26,7 +24,7 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/", name="post_index", methods={"GET"})
+     * @Route("/admin", name="post_index", methods={"GET"})
      * @param PostRepository $postRepository
      * @return Response
      */
@@ -38,7 +36,7 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="post_new", methods={"GET","POST"})
+     * @Route("/admin/post/new", name="post_new", methods={"GET","POST"})
      * @param Request $request
      * @return Response
      */
@@ -63,7 +61,7 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="post_show", methods={"GET"})
+     * @Route("/admin/post/{id}", name="post_show", methods={"GET"})
      * @param Post $post
      * @return Response
      */
@@ -75,7 +73,7 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="post_edit", methods={"GET","POST"})
+     * @Route("/admin/post/{id}/edit", name="post_edit", methods={"GET","POST"})
      * @param Request $request
      * @param Post $post
      * @return Response
@@ -100,7 +98,7 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="post_delete", methods={"DELETE"})
+     * @Route("/admin/post/{id}", name="post_delete", methods={"DELETE"})
      * @param Request $request
      * @param Post $post
      * @return Response

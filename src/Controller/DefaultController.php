@@ -2,12 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Contact;
 use App\Entity\Post;
 use App\Entity\Project;
+use App\Form\ContactType;
 use App\Repository\PostRepository;
 use App\Repository\ProjectRepository;
 use App\Repository\SkillRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -69,13 +72,30 @@ class DefaultController extends AbstractController
         ]);
     }
 
+
     /**
-     * @Route("/contact", name="contact")
+     * @Route("/contact", name="contact", methods={"GET","POST"})
+     * @param Request $request
      * @return Response
      */
-    public function getContact()
+    public function newContact(Request $request): Response
     {
-        return $this->render('default/contact.html.twig');
+        $contact = new Contact();
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($contact);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('contact');
+        }
+
+        return $this->render('default/contact.html.twig', [
+            'contact' => $contact,
+            'form' => $form->createView(),
+        ]);
     }
 
     /**

@@ -6,7 +6,7 @@
 
 {% block body %}
     <nav class="navbar navbar-expand-lg navbar-light sticky-top nav shadow-sm">
-        <a class="navbar-brand" href="#">Alexis Kozlowski</a>
+        <a class="navbar-brand"  href="{{ path('default') }}"><img style="width: 10vh; margin-left: 2vh" src="{{ asset('asset/img/logo-portfolio.png') }}" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -53,30 +53,10 @@
                 </div>
             </div>
         </div>
-        <div class="container contact-form">
-            <form class="form-inline">
-                <label class="sr-only" for="inlineFormInputName2">Nom</label>
-                <div class="mr-5">
-                    <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jean Dupont">
-                </div>
 
+        <h1 class="mt-5 mb-5">Ecrivez-moi !</h1>
+        {{ include('contact/_form.html.twig') }}
 
-                <label class="sr-only" for="inlineFormInputGroupUsername2">Email</label>
-                <div class="input-group mb-2 mr-sm-2">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">@</div>
-                    </div>
-                    <input type="email" class="form-control" id="inlineFormInputGroupUsername2" placeholder="E-mail">
-                </div>
-            </form>
-            <form>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Example textarea</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-                <button type="submit" class="btn btn-outline-primary mb-2">Submit</button>
-            </form>
-        </div>
     </div>
 
 
@@ -84,7 +64,8 @@
         <ul class="list-group list-group-horizontal">
             <li><a class="list-icon" href="https://github.com/Kozlowski-Alexis"><i class="fa fa-github"></i></a></li>
             <li><a class="list-icon" href="{{ path('contact') }}"><i class="fa fa-envelope"></i></a></li>
-            <li><a class="list-icon" href="https://www.linkedin.com/in/alexis-kozlowski-6b7548174/"><i class="fa fa-linkedin"></i></a></li>
+            <li><a class="list-icon" href="https://www.linkedin.com/in/alexis-kozlowski-6b7548174/"><i
+                            class="fa fa-linkedin"></i></a></li>
         </ul>
         <p class="text-center text-footer">© 2018 Copyright - Alexis Kozlowski</p>
     </div>

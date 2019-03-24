@@ -6,7 +6,7 @@
 
 {% block body %}
     <nav class="navbar navbar-expand-lg navbar-light sticky-top nav shadow-sm">
-        <a class="navbar-brand" href="#">Alexis Kozlowski</a>
+        <a class="navbar-brand"  href="{{ path('default') }}"><img style="width: 10vh; margin-left: 2vh" src="{{ asset('asset/img/logo-portfolio.png') }}" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -41,8 +41,8 @@
         <div class="row">
             {% for project in projects %}
                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 round">
-                    <img class="card-img-top img-responsive shadow"
-                         src="asset/img/focus-sur-le-metier-de-developpeur-web-istock-494345930_585ce4bd91848.jpg"
+                    <img class="card-img-top img-responsive shadow" style="height: 40%"
+                         src="{{ project.picture }}"
                          alt="Card image cap">
                     <div class="col-sm card post shadow">
                         <div class="card-body">

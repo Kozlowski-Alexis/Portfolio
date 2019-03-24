@@ -32,6 +32,11 @@ class Post
      */
     private $createdAt;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $picture;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime('now');
@@ -80,6 +85,18 @@ class Post
 
     public function getSkill(SkillRepository $skillRepository){
         return $skillRepository->findAll();
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(string $picture): self
+    {
+        $this->picture = $picture;
+
+        return $this;
     }
 
 }
