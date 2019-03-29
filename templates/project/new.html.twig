@@ -1,11 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Project{% endblock %}
+{% block title %}Nouveau projet{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Project</h1>
+    <div class="container form shadow-lg">
+        <h1>Nouveau projet</h1>
 
-    {{ include('project/_form.html.twig') }}
+        {{ include('project/_form.html.twig') }}
 
-    <a href="{{ path('project_index') }}">back to list</a>
+        <a class="btn btn-outline-dark mt-3" href="{{ path('project_index') }}">Revenir a la liste</a>
+    </div>
+
 {% endblock %}

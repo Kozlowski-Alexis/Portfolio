@@ -34,38 +34,42 @@
     </nav>
 
     <h1 style="color: white" class="ml-3 mt-3">Articles</h1>
-    <div class="container">
-        <table>
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Content</th>
-                <th>CreatedAt</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for post in posts %}
+    <a class="btn btn-info ml-2 mt-2 mb-3" href="{{ path('post_new') }}">Ajouter un article</a>
+
+    <div class="container table+ shadow-lg">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="grey lighten-2 shadow">
                 <tr>
-                    <td>{{ post.id }}</td>
+                    <th scope="col">N°</th>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Contenu</th>
+                    <th scope="col">Date publication</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for post in posts %}
+                <tr>
+                    <th scope="row">{{ post.id }}</th>
                     <td>{{ post.title }}</td>
+                    <td>{{ post.description | slice(0, 30) }}</td>
                     <td>{{ post.content | slice(0, 30) }}</td>
                     <td>{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                     <td>
-                        <a style="color: white" href="{{ path('post_show', {'id': post.id}) }}">show</a>
-                        <a style="color: white" href="{{ path('post_edit', {'id': post.id}) }}">edit</a>
+                        <a class="btn btn-success" href="{{ path('post_show', {'id': post.id}) }}">Afficher</a>
+                        <a class="btn btn-primary" href="{{ path('post_edit', {'id': post.id}) }}">Edit</a>
                     </td>
                 </tr>
-            {% else %}
-                <tr>
-                    <td colspan="5">no records found</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                {% else %}
+                    <tr>
+                        <td colspan="5">Pas d'enregistrements</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
-
-    <a class="btn btn-info ml-2 mt-2" href="{{ path('post_new') }}">Ajouter un article</a>
 
 {% endblock %}

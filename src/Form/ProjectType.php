@@ -15,10 +15,30 @@ class ProjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class)
-            ->add('content', TextareaType::class)
-            ->add('createdAt', DateTimeType::class)
-            ->add('picture', TextType::class)
+            ->add('title', TextType::class, [
+                'label' => 'Titre',
+                'attr' => [
+                    'class' => 'form-control mb-2 mr-sm-2'
+                    ]
+                ])
+            ->add('description', TextareaType::class, [
+                'label' => 'Description',
+                'attr' => [
+                    'class' => 'form-control mb-2 mr-sm-2'
+                    ]
+                ])
+            ->add('content', TextareaType::class, [
+                'label' => 'Contenu',
+                'attr' => [
+                    'class' => 'form-control mb-2 mr-sm-2'
+                    ]
+                ])
+            ->add('picture', TextType::class, [
+                'label' => 'Photo',
+                'attr' => [
+                    'class' => 'form-control mb-2 mr-sm-2'
+                    ]
+                ])
         ;
     }
 

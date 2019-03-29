@@ -33,11 +33,21 @@
     <div class="container-fluid listPost">
         <img class="card-img-top img-responsive shadow"
              src="{{ post.picture }}"/>
-        <div class="col-sm card post shadow">
+        <div class="col-sm card onePost shadow">
             <div class="card-body">
                 <h4 class="card-title postTitle">{{ post.createdAt ? post.createdAt|date('d / m / Y') : '' }}</h4>
+                <nav aria-label="breadcrumb mt-5" style="width: 35vh">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ path('default') }}">Accueil</a></li>
+                        <li class="breadcrumb-item"><a href="{{ path('default') }}">Articles</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
+                    </ol>
+                </nav>
+                <p class="card-text mt-5">
+                    {{ post.description }}
+                </p>
                 <p class="card-text">
-                    {{ post.content | markdown }}
+                    {{ post.content|markdown }}
                 </p>
             </div>
         </div>
@@ -72,6 +82,11 @@
                 (d.head || d.body).appendChild(s);
             })();
         </script>
+        <link rel="stylesheet"
+              href="{{ asset('asset/css/hightlight.css') }}">
+        <script src="{{ asset('asset/js/hightlight.js') }}"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
                 Disqus.</a></noscript>
     {% endblock %}

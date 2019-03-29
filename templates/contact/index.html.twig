@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block body %}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <a class="navbar-brand mr-5" href="#">Admin Portfolio</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -33,38 +33,42 @@
         </div>
     </nav>
 
-    <h1 style="color: white" class="ml-3 mt-3">Articles</h1>
-    <div class="container">
-        <table>
-            <thead>
-            <tr>
-                <th>Prenom</th>
-                <th>Nom</th>
-                <th>Email</th>
-                <th>Message</th>
-                <th>Date</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for contact in contacts %}
+    <h1 style="color: white" class="ml-3 mt-3">Messages</h1>
+
+    <div class="container table+ shadow-lg">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="grey lighten-2 shadow">
                 <tr>
-                    <td>{{ contact.name }}</td>
-                    <td>{{ contact.fullname }}</td>
-                    <td>{{ contact.email }}</td>
-                    <td>{{ contact.message | slice(0, 30)}}</td>
-                    <td>{{ contact.createdAt ? contact.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                    <td>
-                        <a style="color: white" href="{{ path('contact_show', {'id': contact.id}) }}">show</a>
-                    </td>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prenom</th>
+                    <th scope="col">Message</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Actions</th>
                 </tr>
-            {% else %}
-                <tr>
-                    <td colspan="7">no records found</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {% for contact in contacts %}
+                    <tr>
+                        <th scope="row">{{ contact.email }}</th>
+                        <td>{{ contact.fullname }}</td>
+                        <td>{{ contact.name }}</td>
+                        <td>{{ contact.message | slice(0, 30) }}</td>
+                        <td>{{ contact.createdAt ? contact.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                        <td>
+                            <a class="btn btn-success" href="{{ path('contact_show', {'id': contact.id}) }}">Afficher</a>
+                            <a class="btn btn-info mt-1" href="mailto:{{ contact.email }}?subject=Re: Contact">Envoyer un E-mail</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">Pas d'enregistrements</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 
 {% endblock %}

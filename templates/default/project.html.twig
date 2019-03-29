@@ -33,11 +33,14 @@
     <div class="container-fluid listPost">
         <img class="card-img-top img-responsive shadow"
              src="{{ project.picture }}"/>
-        <div class="col-sm card post shadow">
+        <div class="col-sm card OnePost shadow">
             <div class="card-body">
                 <h4 class="card-title postTitle">{{ project.createdAt ? project.createdAt|date('d / m / Y') : '' }}</h4>
                 <p class="card-text">
-                    {{ project.content }}
+                    {{ project.description }}
+                </p>
+                <p class="card-text">
+                    {{ project.content|markdown }}
                 </p>
             </div>
         </div>

@@ -48,7 +48,7 @@
                             <h4 class="card-title postTitle">{{ post.createdAt ? post.createdAt|date('d / m / Y') : '' }}</h4>
                             <h3>{{ post.title }}</h3>
                             <p class="card-text">
-                                {{ post.content }}
+                                {{ post.description |  slice(0, 30) }}
                             </p>
                             <a href="{{ path('default_post_show', {'id': post.id}) }}"
                                class="btn btn-outline-primary btn-card">En savoir
@@ -79,7 +79,7 @@
                             <h4 class="card-title projectTitle">{{ project.title }}</h4>
                             <h5>{{ project.createdAt ? project.createdAt|date('d / m / Y') : '' }}</h5>
                             <p class="card-text">
-                                {{ project.content }}
+                                {{ project.description | slice(0, 30) }}
                             </p>
                             <a href="{{ path('default_project_show', {'id': project.id}) }}"
                                class="btn btn-outline-primary btn-card">En savoir

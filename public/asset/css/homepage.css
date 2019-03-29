@@ -67,7 +67,7 @@ body{
     background-image: linear-gradient( 135deg, #43CBFF 10%, #9708CC 100%);
     color: white;
     width: 40%;
-    height: 20%;
+    height: 2em;
     line-height: 2em;
     text-align: center;
     margin-left: 30%;
@@ -117,6 +117,11 @@ body{
     padding-bottom: 2em;
 }
 
+.onePost{
+    margin-bottom: 4em;
+    padding-bottom: 2em;
+}
+
 .skill{
     margin-top: 3em;
     padding-top: 2em;
@@ -146,10 +151,11 @@ body{
 }
 
 .footer{
-    height: 40vh;
+    height: 100%;
     background-image: linear-gradient( 135deg, #52E5E7 10%, #130CB7 100%);
     opacity: 0.80;
     padding-top: 6em;
+    margin-bottom: -1em;
 }
 
 .text-footer{
@@ -234,6 +240,12 @@ input[type=email]{
     opacity: 0.70;
 }
 
+u{
+    height: 3px;
+    color: white;
+    width: 30%;
+}
+
 /*Progress Bar*/
 .progress-skill {
     width: 100%;
@@ -270,3 +282,64 @@ p.progress-label {
     margin-top: 3vh;
     margin-bottom: 1vh;
 }
+
+/*about me*/
+.img-about{
+    border-radius: 10px;
+    margin-top: 4em;
+    width: 90vh;
+    margin-left: 20em;
+}
+
+.cont-about{
+    background-color: white;
+    height: 35vh;
+    width: 10vh;
+    margin-left: -20em;
+    margin-top: 7em;
+    border-radius: 10px
+}
+
+.btn-cv{
+    margin-top: 12vh;
+    margin-left: 23vh;
+}
+
+.cont-skill{
+    background-color: white;
+    height: 35vh;
+    width: 10vh;
+    margin-top: 7em;
+    border-radius: 10px;
+    margin-right: -20em;
+    margin-left: 20em;
+    z-index: 1
+}
+
+@media screen and (max-width: 1024px) {
+    .img-about{
+        margin-left: 0em;
+    }
+    .cont-about{
+        margin-left: 0em;
+        margin-top: 1em;
+    }
+    .cont-skill{
+        margin-top: 1em;
+        margin-right: 0em;
+        margin-left: 0em;
+        height: 25vh;
+
+    }
+    .skillList{
+        padding-top: 0em;
+        padding-left: 1em;
+        margin-top: 1em;
+        padding-right: 1em;
+    }
+    .btn-cv{
+        margin-top: 5em;
+        margin-left: 0vh;
+    }
+}
+/**/

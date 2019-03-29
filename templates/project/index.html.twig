@@ -35,37 +35,42 @@
     </nav>
 
     <h1 style="color: white" class="ml-3 mt-3">Projets</h1>
-    <div class="container">
-        <table>
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Content</th>
-                <th>CreatedAt</th>
-                <th>actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for project in projects %}
+    <a class="btn btn-info ml-2 mt-2 mb-3" href="{{ path('project_new') }}">Ajouter un projet</a>
+
+    <div class="container table+ shadow-lg">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="grey lighten-2 shadow">
                 <tr>
-                    <td>{{ project.id }}</td>
-                    <td>{{ project.title }}</td>
-                    <td>{{ project.content | slice(0, 30)}}</td>
-                    <td>{{ project.createdAt ? project.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                    <td>
-                        <a style="color: white" href="{{ path('project_show', {'id': project.id}) }}">show</a>
-                        <a style="color: white" href="{{ path('project_edit', {'id': project.id}) }}">edit</a>
-                    </td>
+                    <th scope="col">N°</th>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Contenu</th>
+                    <th scope="col">Date publication</th>
+                    <th scope="col">Actions</th>
                 </tr>
-            {% else %}
-                <tr>
-                    <td colspan="5">no records found</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {% for project in projects %}
+                    <tr>
+                        <th scope="row">{{ project.id }}</th>
+                        <td>{{ project.title }}</td>
+                        <td>{{ project.description | slice(0, 30) }}</td>
+                        <td>{{ project.content | slice(0, 30) }}</td>
+                        <td>{{ project.createdAt ? project.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                        <td>
+                            <a class="btn btn-success" href="{{ path('project_show', {'id': project.id}) }}">Afficher</a>
+                            <a class="btn btn-primary" href="{{ path('project_edit', {'id': project.id}) }}">Edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">Pas d'enregistrements</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 
-    <a class="btn btn-info ml-2 mt-2" href="{{ path('project_new') }}">Ajouter un projet</a>
 {% endblock %}
