@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Message{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <h1 style="color: white" class="ml-3 mt-3">Message</h1>
+
+    <div class="container-fluid table+ shadow-lg">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="grey lighten-2 shadow">
+                <tr>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prenom</th>
+                    <th scope="col">Message</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">{{ contact.email }}</th>
+                    <td>{{ contact.fullname }}</td>
+                    <td>{{ contact.name }}</td>
+                    <td>{{ contact.message }}</td>
+                    <td>{{ contact.createdAt ? contact.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>
+                        <a class="btn btn-info" href="mailto:{{ contact.email }}?subject=Re: Contact">Envoyer un E-mail</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <a class="btn btn-outline-dark mt-3" href="{{ path('contact_index') }}">Retour a la liste</a>
+    </div>
+
+    {% block javascripts %}
+        <link rel="stylesheet"
+              href="{{ asset('asset/css/hightlight.css') }}">
+        <script src="{{ asset('asset/js/hightlight.js') }}"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+    {% endblock %}
+{% endblock %}

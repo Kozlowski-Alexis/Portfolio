@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\SkillRepository;
-use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,6 +31,16 @@ class Post
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $picture;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
 
     public function __construct()
     {
@@ -82,4 +91,29 @@ class Post
     public function getSkill(SkillRepository $skillRepository){
         return $skillRepository->findAll();
     }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(string $picture): self
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
 }

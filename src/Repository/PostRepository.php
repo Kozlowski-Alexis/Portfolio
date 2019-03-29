@@ -36,15 +36,16 @@ class PostRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Post
+    /**
+     * @return Post|\Doctrine\ORM\Query|null
+     */
+    public function findPostLimit3()
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
+            ->orderBy('p.createdAt', 'DESC')
+            ->setMaxResults(3)
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult()
         ;
     }
-    */
 }

@@ -10,23 +10,35 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/post")
- */
+
 class PostController extends AbstractController
 {
     /**
-     * @Route("/", name="post_index", methods={"GET"})
+     * @var PostRepository $postRepository
+     */
+    private $postRepository;
+
+    public function __construct(PostRepository $postRepository)
+    {
+        $this->postRepository = $postRepository;
+    }
+
+    /**
+     * @Route("/admin", name="post_index", methods={"GET"})
+     * @param PostRepository $postRepository
+     * @return Response
      */
     public function index(PostRepository $postRepository): Response
     {
         return $this->render('post/index.html.twig', [
-            'posts' => $postRepository->findAll(),
+            'posts' => $this->postRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/new", name="post_new", methods={"GET","POST"})
+     * @Route("/admin/post/new", name="post_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -49,7 +61,9 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="post_show", methods={"GET"})
+     * @Route("/admin/post/{id}", name="post_show", methods={"GET"})
+     * @param Post $post
+     * @return Response
      */
     public function show(Post $post): Response
     {
@@ -59,7 +73,10 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="post_edit", methods={"GET","POST"})
+     * @Route("/admin/post/{id}/edit", name="post_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Post $post
+     * @return Response
      */
     public function edit(Request $request, Post $post): Response
     {
@@ -81,7 +98,10 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="post_delete", methods={"DELETE"})
+     * @Route("/admin/post/{id}", name="post_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Post $post
+     * @return Response
      */
     public function delete(Request $request, Post $post): Response
     {

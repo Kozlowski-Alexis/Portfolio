@@ -1,39 +1,75 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Post index{% endblock %}
+{% block title %}Admin{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
+{% endblock %}
 
 {% block body %}
-    <h1>Post index</h1>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand mr-5" href="#">Admin Portfolio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Content</th>
-                <th>CreatedAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for post in posts %}
-            <tr>
-                <td>{{ post.id }}</td>
-                <td>{{ post.title }}</td>
-                <td>{{ post.content }}</td>
-                <td>{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('post_show', {'id': post.id}) }}">show</a>
-                    <a href="{{ path('post_edit', {'id': post.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ path('post_index') }}">Gestion articles<span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('project_index') }}">Gestion projets</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('skill_index') }}">Gestion competences</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('contact_index') }}">Messages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-danger ml-3" href="{{ path('logout') }}">Se deconnecter</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-    <a href="{{ path('post_new') }}">Create new</a>
+    <h1 style="color: white" class="ml-3 mt-3">Articles</h1>
+    <a class="btn btn-info ml-2 mt-2 mb-3" href="{{ path('post_new') }}">Ajouter un article</a>
+
+    <div class="container table+ shadow-lg">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="grey lighten-2 shadow">
+                <tr>
+                    <th scope="col">N°</th>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Contenu</th>
+                    <th scope="col">Date publication</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for post in posts %}
+                <tr>
+                    <th scope="row">{{ post.id }}</th>
+                    <td>{{ post.title }}</td>
+                    <td>{{ post.description | slice(0, 30) }}</td>
+                    <td>{{ post.content | slice(0, 30) }}</td>
+                    <td>{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>
+                        <a class="btn btn-success" href="{{ path('post_show', {'id': post.id}) }}">Afficher</a>
+                        <a class="btn btn-primary" href="{{ path('post_edit', {'id': post.id}) }}">Edit</a>
+                    </td>
+                </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">Pas d'enregistrements</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 {% endblock %}

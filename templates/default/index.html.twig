@@ -1,45 +1,107 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('asset/homepage.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/homepage.css') }}">
 {% endblock %}
 
 {% block body %}
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">Alexis KOZLOWSKI</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-                aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top nav shadow-sm">
+        <a class="navbar-brand"  href="{{ path('default') }}"><img style="width: 10vh; margin-left: 2vh" src="{{ asset('asset/img/logo-portfolio.png') }}" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('default') }}">ACCUEIL</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('about_me') }}">A PROPOS DE MOI</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-primary navItem" href="{{ path('contact') }}">CONTACT</a>
+                </li>
+            </ul>
+        </div>
     </nav>
 
-    <main role="main" class="container-fluid main">
-        <h1>Kozlowski Alexis</h1>
-        <h2>Developpeur Web de gestion !</h2>
-    </main>
+    <div class="container-fluid align-content-center main ">
+        <h1 class="text-center">Kozlowski Alexis</h1>
+        <h2 class="text-center">Developpeur Web de gestion !</h2>
+    </div>
 
-    <div class="container-fluid">
-        <div class="container post">
+    <div class="container-fluid listPost">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 offset-lg-4 offset-xl-4 text-center pb-5">
+                <h1 class="listTitlePost rounded">Articles</h1>
+            </div>
+        </div>
+        <div class="row">
             {% for post in posts %}
-                <h1>{{ post.title }}</h1>
-                <span>{{ post.content }}</span>
-                <span>{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</span>
-            {% else %}
-                <tr>
-                    <td colspan="5">no records found</td>
-                </tr>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                    <img class="card-img-top img-responsive shadow" style="height: 40%"
+                         src="{{ post.picture }}"/>
+                    <div class="col-sm card post shadow">
+                        <div class="card-body">
+                            <h4 class="card-title postTitle">{{ post.createdAt ? post.createdAt|date('d / m / Y') : '' }}</h4>
+                            <h3>{{ post.title }}</h3>
+                            <p class="card-text">
+                                {{ post.description |  slice(0, 30) }}
+                            </p>
+                            <a href="{{ path('default_post_show', {'id': post.id}) }}"
+                               class="btn btn-outline-primary btn-card">En savoir
+                                plus</a>
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
         </div>
+    </div>
 
-        <div class="container">
-            {% for skill in skills %}
-                <h1>{{ skill.name }}</h1>
-                <span>{{ skill.value }}</span>
-            {% else %}
-                <tr>
-                    <td colspan="4">no records found</td>
-                </tr>
+    <div class="container-fluid blur"></div>
+
+    <div class="container-fluid listProject">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 offset-lg-4 offset-xl-4 text-center pb-5">
+                <h1 class="listTitleProject rounded">Projets</h1>
+            </div>
+        </div>
+        <div class="row">
+            {% for project in projects %}
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 round">
+                    <img class="card-img-top img-responsive shadow" style="height: 40%"
+                         src="{{ project.picture }}"
+                         alt="Card image cap">
+                    <div class="col-sm card post shadow">
+                        <div class="card-body">
+                            <h4 class="card-title projectTitle">{{ project.title }}</h4>
+                            <h5>{{ project.createdAt ? project.createdAt|date('d / m / Y') : '' }}</h5>
+                            <p class="card-text">
+                                {{ project.description | slice(0, 30) }}
+                            </p>
+                            <a href="{{ path('default_project_show', {'id': project.id}) }}"
+                               class="btn btn-outline-primary btn-card">En savoir
+                                plus</a>
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
         </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 offset-lg-4 offset-xl-4 text-center pb-5">
+                <a href="{{ path('projets') }}" class="btn btn-outline-primary all-project-btn">Tous les projets</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid footer">
+        <ul class="list-group list-group-horizontal">
+            <li><a class="list-icon" href="https://github.com/Kozlowski-Alexis"><i class="fa fa-github"></i></a></li>
+            <li><a class="list-icon" href="{{ path('contact') }}"><i class="fa fa-envelope"></i></a></li>
+            <li><a class="list-icon" href="https://www.linkedin.com/in/alexis-kozlowski-6b7548174/"><i class="fa fa-linkedin"></i></a></li>
+        </ul>
+        <p class="text-center text-footer">© 2018 Copyright - Alexis Kozlowski</p>
     </div>
 {% endblock %}

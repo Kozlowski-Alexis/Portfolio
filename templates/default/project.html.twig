@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/homepage.css') }}">
+{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top nav shadow-sm">
+        <a class="navbar-brand"  href="{{ path('default') }}"><img style="width: 10vh; margin-left: 2vh" src="{{ asset('asset/img/logo-portfolio.png') }}" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('default') }}">ACCUEIL</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('about_me') }}">A PROPOS DE MOI</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-primary navItem" href="{{ path('contact') }}">CONTACT</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid align-content-center main ">
+        <h1 class="text-center">{{ project.title }}</h1>
+    </div>
+    <div class="container-fluid listPost">
+        <img class="card-img-top img-responsive shadow"
+             src="{{ project.picture }}"/>
+        <div class="col-sm card OnePost shadow">
+            <div class="card-body">
+                <h4 class="card-title postTitle">{{ project.createdAt ? project.createdAt|date('d / m / Y') : '' }}</h4>
+                <p class="card-text">
+                    {{ project.description }}
+                </p>
+                <p class="card-text">
+                    {{ project.content|markdown }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container-fluid footer">
+        <ul class="list-group list-group-horizontal">
+            <li><a class="list-icon" href="https://github.com/Kozlowski-Alexis"><i class="fa fa-github"></i></a></li>
+            <li><a class="list-icon" href="{{ path('contact') }}"><i class="fa fa-envelope"></i></a></li>
+            <li><a class="list-icon" href="https://www.linkedin.com/in/alexis-kozlowski-6b7548174/"><i class="fa fa-linkedin"></i></a></li>
+        </ul>
+        <p class="text-center text-footer">© 2018 Copyright - Alexis Kozlowski</p>
+    </div>
+{% endblock %}
